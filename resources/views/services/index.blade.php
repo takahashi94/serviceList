@@ -40,7 +40,9 @@
                 <td>{{ $service->price }}</td>
                 <td>{{ $service->billing_date }}</td>
                 <td>
-                  <button class="btn btn-primary">編集</button>
+                  <button class="btn btn-primary">
+                    <a href="{{ route('service.edit', ['service_id' => $service->id]) }}">編集</a>
+                  </button>
                 </td>
                 <td>
                   <button class="btn btn-danger">削除</button>

@@ -12,7 +12,7 @@
                       <div class="form-group row">
                         <label class="col-md-3 col-form-label form-control-label">サービス名</label>
                         <div class="col-md-9">
-                          <input name="name" class="form-control" type="text" value="{{ old("name") }}">
+                          <input name="name" class="form-control" type="text" value="{{ old("name") ?? $service->name }}">
                           @if ($errors->has('name'))
                             <div>{{$errors->first('name') }}</div>
                           @endif
@@ -21,7 +21,7 @@
                       <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">料金</label>
                         <div class="col-lg-9">
-                          <input class="form-control" type="text" name="price" value="{{ old('price') }}">
+                          <input class="form-control" type="text" name="price" value="{{ old('price') ?? $service->price }}">
                           @if ($errors->has('price'))
                             <div>{{$errors->first('price') }}</div>
                           @endif

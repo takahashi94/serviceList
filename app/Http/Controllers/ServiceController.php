@@ -36,4 +36,25 @@ class ServiceController extends Controller
 
         return redirect('/');
     }
+
+    public function edit(int $service_id)
+    {
+        $service = Service::find($service_id);
+
+        $id = Auth::id();
+
+        return view('services.edit', [
+            'service' => $service,
+            'id' => $id,
+        ]);
+    }
+
+    public function update(CreateServiceRequest $request, int $service_id)
+    {
+        $service = Service::find($service_id);
+
+        $service->fill($request->all())->save();
+
+        return redirect('/');
+    }
 }
