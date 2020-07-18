@@ -40,12 +40,15 @@
                 <td>{{ $service->price }}</td>
                 <td>{{ $service->billing_date }}</td>
                 <td>
-                  <button class="btn btn-primary">
+                  <button class="btn btn-primary btn-sm">
                     <a href="{{ route('service.edit', ['service_id' => $service->id]) }}">編集</a>
                   </button>
                 </td>
                 <td>
-                  <button class="btn btn-danger">削除</button>
+                  <form action="{{ route('service.delete', ['service_id' => $service->id]) }}" method="post">
+                    @csrf
+                    <input type="submit" name="" value="削除" class="btn btn-danger btn-sm">
+                  </form>
                 </td>
               </tr>
               @endforeach

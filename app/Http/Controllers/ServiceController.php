@@ -57,4 +57,10 @@ class ServiceController extends Controller
 
         return redirect('/');
     }
+
+    public function delete(Request $request)
+    {
+        Service::find($request->service_id)->delete();
+        return redirect('/');
+    }
 }
