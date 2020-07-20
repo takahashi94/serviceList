@@ -13,10 +13,32 @@ class ServiceController extends Controller
     {
         $user = Auth::user();
         $services = $user->services()->get();
+        // 月額
+        $monthly_total = 0;
+        foreach ($services as $value) {
+            if ($value->plan === "月額") {
+                $month = $value->price;
+            } else {
+                $month = $value->price / 12;
+            }
+            $monthly_total += $month;
+        }
+// echo $monthly;
 
+        $annual_total = 0;
+        foreach ($services as $value) {
+            if ($value->plan === "月額") {
+                $year = $value->price * 12;
+            } else {
+                $year = $value->price;
+            }
+            $annual_total += $year;
+        }
         return view('services.index', [
             'user' => $user,
             'services' => $services,
+            'monthly_total' => $monthly_total,
+            'annual_total' => $annual_total,
         ]);
     }
 

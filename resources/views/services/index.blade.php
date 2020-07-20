@@ -3,58 +3,62 @@
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-10">
-      <div class="card">
-        <div class="card text-white bg-primary mb-3" style="max-width: 100%">
+    <div class="col-md-6">
+      <div class="card-deck mb-5">
+        <div class="card text-center bg-info">
           <div class="card-body">
-            <p class="card-title">月額合計</p>
-            <h5 class="card-text">¥1,000</h5>
+            <div class="card-title">
+              <h5>月額合計</h5>
+            </div>
+            <div class="card-text">
+              <h2>¥{{ number_format($monthly_total) }}</h2>
+            </div>
           </div>
         </div>
-        <div class="card text-white bg-secondary mb-3" style="max-width: 100%;">
+        <div class="card text-center bg-success">
           <div class="card-body">
-            <p class="card-title">年間合計</p>
-            <h5 class="card-text">¥10,000</h5>
+            <div class="card-title">
+              <h5>年額合計</h5>
+            </div>
+            <div class="card-text">
+              <h2>¥{{ number_format($annual_total) }}</h2>
+            </div>
           </div>
         </div>
       </div>
-      <div class="card card-outline-secondary">
-        <div class="card-header">サービス一覧</div>
-        <div class="card-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">サービス名</th>
-                <th scope="col">plan</th>
-                <th scope="col">価格</th>
-                <th scope="col">請求日</th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-                @foreach ($services as $service)
-              <tr>
-                <td scope="col">{{ $service->name }}</td>
-                <td>{{ $service->plan }}</td>
-                <td>{{ $service->price }}</td>
-                <td>{{ $service->billing_date }}</td>
-                <td>
-                  <button class="btn btn-primary btn-sm">
-                    <a href="{{ route('service.edit', ['service_id' => $service->id]) }}">編集</a>
-                  </button>
-                </td>
-                <td>
-                  <form action="{{ route('service.delete', ['service_id' => $service->id]) }}" method="post">
-                    @csrf
-                    <input type="submit" name="" value="削除" class="btn btn-danger btn-sm">
-                  </form>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+      <div class="list-group">
+        <div class="list-group-item list-group-item-action flex-column align-items-start mb-3 border-light">
+          <div class="d-flex w-100 justify-content-between">
+            <h3 class="mb-1">サービス一覧</h3>
+            <p class="mb-1">
+              <a href="route{{ route('service.create') }}" class=""><i class="fas fa-plus-circle fa-fw fa-lg"></i>新規作成</a>
+            </p>
+          </div>
         </div>
+      </div>
+      <div class="list-group">
+        @foreach ($services as $service)
+        <div class="list-group-item list-group-item flex-column mb-3 border-top rounded">
+          <div class="d-flex w-100 justify-content-between">
+            <h3 class="mb-1">{{ $service->name }}</h3>
+            <p>{{ $service->plan }} ¥{{ number_format($service->price) }}</p>
+          </div>
+          <div class="d-flex w-100 justify-content-between">
+            <p class="pt-1">更新日: {{ $service->billing_date }}</p>
+            <div>
+            <a href="{{ route('service.edit', ['service_id' => $service->id]) }}" class=""><i class="fas fa-pencil-alt fa-lg fa-fw"></i></a>
+            <a href="{{ route('service.delete', ['service_id' => $service->id]) }}"
+              onclick="event.preventDefault();
+                            document.getElementById('service_delete').submit();">
+              <i class="fas fa-trash-restore fa-lg"></i>
+            </a>
+            <form id="service_delete" action="{{ route('service.delete', ['service_id' => $service->id]) }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+          </div>
+          </div>
+        </div>
+        @endforeach
       </div>
     </div>
   </div>

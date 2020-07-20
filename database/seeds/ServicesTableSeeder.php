@@ -23,5 +23,15 @@ class ServicesTableSeeder extends Seeder
                 'info_date' => Carbon::now(),
             ]);
         }
+        for ($i=1; $i<=10; $i++) {
+            Service::create([
+                'user_id' => 1,
+                'name' => 'name' . $i,
+                'price' => 1000 + $i,
+                'plan' => '年額',
+                'billing_date' => Carbon::now(),
+                'info_date' => Carbon::now(),
+            ]);
+        }
     }
 }
