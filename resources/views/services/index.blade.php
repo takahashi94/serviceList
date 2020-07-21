@@ -4,7 +4,14 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <div class="card-deck mb-5">
+      <div class="list-group-flush">
+        <div class="list-group-item mb-3">
+          <div class="d-flex w-100 justify-content-between">
+            <h3 class="mb-1">サービス一覧</h3>
+          </div>
+        </div>
+      </div>
+      <div class="card-deck mb-5 text-white">
         <div class="card text-center bg-info">
           <div class="card-body">
             <div class="card-title">
@@ -26,12 +33,12 @@
           </div>
         </div>
       </div>
-      <div class="list-group">
-        <div class="list-group-item list-group-item-action flex-column align-items-start mb-3 border-light">
+      <div class="list-group-flush">
+        <div class="list-group-item align-items-start mb-3 border-light">
           <div class="d-flex w-100 justify-content-between">
-            <h3 class="mb-1">サービス一覧</h3>
+            <h3 class="mb-1"></h3>
             <p class="mb-1">
-              <a href="route{{ route('service.create') }}" class=""><i class="fas fa-plus-circle fa-fw fa-lg"></i>新規作成</a>
+              <a href="{{ route('service.create') }}" class=""><i class="fas fa-plus-circle fa-fw fa-lg"></i>新規作成</a>
             </p>
           </div>
         </div>

@@ -23,8 +23,8 @@ class ServiceController extends Controller
             }
             $monthly_total += $month;
         }
-// echo $monthly;
 
+        //年額
         $annual_total = 0;
         foreach ($services as $value) {
             if ($value->plan === "月額") {
@@ -34,6 +34,7 @@ class ServiceController extends Controller
             }
             $annual_total += $year;
         }
+
         return view('services.index', [
             'user' => $user,
             'services' => $services,
@@ -56,7 +57,7 @@ class ServiceController extends Controller
 
         $service->fill($request->all())->save();
 
-        return redirect('/');
+        return redirect('/services');
     }
 
     public function edit(int $service_id)

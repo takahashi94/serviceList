@@ -15,15 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/' , 'ServiceController@index')->name('service.index');
+Route::group(['middleware' => 'auth'], function() {
+  Route::get('/services' , 'ServiceController@index')->name('services.index');
 
-Route::get('service/create', 'ServiceController@create')->name('service.create');
-Route::post('service/create', 'ServiceController@store');
+  Route::get('service/create', 'ServiceController@create')->name('service.create');
+  Route::post('service/create', 'ServiceController@store');
 
-Route::get('service/edit/{service_id}', 'ServiceController@edit')->name('service.edit');
-Route::post('service/edit/{service_id}', 'ServiceController@update');
+  Route::get('service/edit/{service_id}', 'ServiceController@edit')->name('service.edit');
+  Route::post('service/edit/{service_id}', 'ServiceController@update');
 
-Route::post('service/delete/{service_id}', 'ServiceController@delete')->name('service.delete');
+  Route::post('service/delete/{service_id}', 'ServiceController@delete')->name('service.delete');
+});
 
