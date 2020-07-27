@@ -29,3 +29,5 @@ Route::group(['middleware' => 'auth'], function() {
   Route::post('service/delete/{service_id}', 'ServiceController@delete')->name('service.delete');
 });
 
+
+Route::get('suggest', 'ServiceController@suggest')->name('suggest');

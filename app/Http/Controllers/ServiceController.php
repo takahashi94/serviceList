@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service;
+use App\Name;
 use App\Http\Requests\CreateServiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,13 @@ class ServiceController extends Controller
             'monthly_total' => $monthly_total,
             'annual_total' => $annual_total,
         ]);
+    }
+
+    public function suggest(Request $request) {
+        $searchquery = $request->input('query');
+
+        $data = Name::where('name', 'like', '%' . $searchquery . '%')->get();
+        return response()->json($data);
     }
 
     public function create()

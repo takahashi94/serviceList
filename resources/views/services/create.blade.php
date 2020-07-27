@@ -12,7 +12,8 @@
                       <div class="form-group row">
                         <label class="col-md-3 col-form-label form-control-label">サービス名</label>
                         <div class="col-md-9">
-                          <input name="name" class="form-control" type="text" value="{{ old("name") }}">
+                          {{-- <input id="search" name="name" class="form-control" type="text" value="{{ old("name") }}"> --}}
+                          <auto-complete-datalist-component param="name" url="/suggest"/>
                           @if ($errors->has('name'))
                             <div>{{$errors->first('name') }}</div>
                           @endif
