@@ -4,6 +4,11 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
+        @if (session('flash_message'))
+        <div class="flash_message bg-success text-center py-3 my-0">
+            {{ session('flash_message') }}
+        </div>
+    @endif
       <div class="list-group-flush">
         <div class="list-group-item mb-3">
           <div class="d-flex w-100 justify-content-between">
@@ -12,7 +17,7 @@
         </div>
       </div>
       <div class="card-deck mb-5 text-white">
-        <div class="card text-center bg-info">
+        <div class="card text-center bg-secondary">
           <div class="card-body">
             <div class="card-title">
               <h5>月額合計</h5>
@@ -22,7 +27,7 @@
             </div>
           </div>
         </div>
-        <div class="card text-center bg-success">
+        <div class="card text-center bg-secondary">
           <div class="card-body">
             <div class="card-title">
               <h5>年額合計</h5>

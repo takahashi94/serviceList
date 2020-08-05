@@ -1935,6 +1935,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       query: "",
       name: "",
+      price: "",
       results: []
     };
   },
@@ -37601,7 +37602,7 @@ var render = function() {
         type: "text",
         Autocomplete: "off",
         list: _vm.param,
-        name: _vm.name
+        name: "name"
       },
       domProps: { value: _vm.query },
       on: {
@@ -37623,7 +37624,7 @@ var render = function() {
       _vm._l(_vm.results, function(result) {
         return _c("option", {
           key: result.id,
-          domProps: { value: result.price }
+          domProps: { value: result[_vm.param] }
         })
       }),
       0

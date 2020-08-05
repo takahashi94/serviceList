@@ -65,7 +65,7 @@ class ServiceController extends Controller
 
         $service->fill($request->all())->save();
 
-        return redirect('/services');
+        return redirect('/services')->with('flash_message', 'サービスの登録が完了しました。');
     }
 
     public function edit(int $service_id)
@@ -86,12 +86,12 @@ class ServiceController extends Controller
 
         $service->fill($request->all())->save();
 
-        return redirect('/');
+        return redirect('/services')->with('flash_message', 'サービスの編集が完了しました。');
     }
 
     public function delete(Request $request)
     {
         Service::find($request->service_id)->delete();
-        return redirect('/');
+        return redirect('/services')->with('flash_message', 'サービスの削除が完了しました。');
     }
 }

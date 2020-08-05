@@ -23,6 +23,7 @@
                         <label class="col-lg-3 col-form-label form-control-label">料金</label>
                         <div class="col-lg-9">
                           <input class="form-control" type="text" name="price" value="{{ old('price') }}">
+                          {{-- <input type="text" v-model="price"> --}}
                           @if ($errors->has('price'))
                             <div>{{$errors->first('price') }}</div>
                           @endif
@@ -32,8 +33,8 @@
                         <label class="col-lg-3 col-form-label form-control-label">プラン</label>
                         <div class="col-lg-9">
                           <select class="form-control" name="plan">
-                            <option value="月額">月額</option>
-                            <option value="年額">年額</option>
+                            <option value="月額" @if(old('plan') === '月額') selected @endif>月額</option>
+                            <option value="年額" @if(old('plan') === '年額') selected @endif>年額</option>
                           </select>
                           @if ($errors->has('plan'))
                             <div>{{$errors->first('plan') }}</div>
@@ -43,7 +44,7 @@
                       <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">請求日</label>
                         <div class="col-lg-9">
-                          <input class="form-control" type="date" name="billing_date">
+                          <input class="form-control" type="date" name="billing_date" value="{{ old('billing_date') }}">
                           @if ($errors->has('billing_date'))
                             <div>{{$errors->first('billing_date') }}</div>
                           @endif
@@ -52,7 +53,7 @@
                       <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">お知らせ日</label>
                         <div class="col-lg-9">
-                          <input class="form-control" type="date" name="info_date">
+                          <input class="form-control" type="date" name="info_date" value="{{ old('info_date') }}">
                           @if ($errors->has('info_date'))
                             <div>{{$errors->first('info_date') }}</div>
                           @endif

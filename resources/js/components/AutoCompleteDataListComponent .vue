@@ -7,7 +7,7 @@
             Autocomplete="off"
             :list="param"
             class="form-control"
-            :name="name"
+            name="name"
         />
         <datalist :id="param">
             <option
@@ -26,6 +26,7 @@ export default {
         return {
             query: "",
             name: "",
+            price: "",
             results: []
         };
     },
