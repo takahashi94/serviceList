@@ -30,4 +30,3 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 
-Route::get('suggest', 'ServiceController@suggest')->name('suggest');

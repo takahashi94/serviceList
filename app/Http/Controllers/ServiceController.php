@@ -44,7 +44,7 @@ class ServiceController extends Controller
         ]);
     }
 
-    public function suggest(Request $request) {
+    public function autocomplete(Request $request) {
         $searchquery = $request->input('query');
 
         $data = Name::where('name', 'like', '%' . $searchquery . '%')->get();

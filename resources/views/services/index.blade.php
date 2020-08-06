@@ -4,11 +4,11 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
-        @if (session('flash_message'))
+      @if (session('flash_message'))
         <div class="flash_message bg-success text-center py-3 my-0">
             {{ session('flash_message') }}
         </div>
-    @endif
+      @endif
       <div class="list-group-flush">
         <div class="list-group-item mb-3">
           <div class="d-flex w-100 justify-content-between">
@@ -58,16 +58,16 @@
           <div class="d-flex w-100 justify-content-between">
             <p class="pt-1">更新日: {{ $service->billing_date }}</p>
             <div>
-            <a href="{{ route('service.edit', ['service_id' => $service->id]) }}" class=""><i class="fas fa-pencil-alt fa-lg fa-fw"></i></a>
-            <a href="{{ route('service.delete', ['service_id' => $service->id]) }}"
-              onclick="event.preventDefault();
-                            document.getElementById('service_delete').submit();">
-              <i class="fas fa-trash-restore fa-lg"></i>
-            </a>
-            <form id="service_delete" action="{{ route('service.delete', ['service_id' => $service->id]) }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-          </div>
+              <a href="{{ route('service.edit', ['service_id' => $service->id]) }}" class=""><i class="fas fa-pencil-alt fa-lg fa-fw"></i></a>
+              <a href="{{ route('service.delete', ['service_id' => $service->id]) }}"
+                onclick="event.preventDefault();
+                              document.getElementById('service_delete').submit();">
+                <i class="fas fa-trash-restore fa-lg"></i>
+              </a>
+              <form id="service_delete" action="{{ route('service.delete', ['service_id' => $service->id]) }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+            </div>
           </div>
         </div>
         @endforeach
