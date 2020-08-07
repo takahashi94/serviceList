@@ -35,4 +35,12 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
   Auth::routes();
 
   Route::get('/home', 'AdminHomeController@index')->name('admin.home');
+
+  Route::get('/create', 'AdminHomeController@create')->name('admin.create');
+  Route::post('/create', 'AdminHomeController@store');
+
+  Route::get('/edit/{name_id}', 'AdminHomeController@edit')->name('name.edit');
+  Route::post('/edit/{name_id}', 'AdminHomeController@update');
+
+  Route::post('/delete/{name_id}', 'AdminHomeController@delete')->name('name.delete');
 });
